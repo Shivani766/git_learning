@@ -3,6 +3,7 @@ const router = express.Router();
 const UserTask = require('../models/userTask'); // Ensure the correct path and casing
 
 // GET all tasks
+
 router.get('/', async (req, res) => {
   try {
     const data = await UserTask.find();
@@ -47,18 +48,28 @@ router.put('/:id', async (req, res) => {
 
 // DELETE a task by ID
 router.delete('/:id', async (req, res) => {
-  try {
+  try  {
     const taskId = req.params.id;
     const deletedTask = await UserTask.findByIdAndDelete(taskId);
     if (!deletedTask) {
       return res.status(404).json({ error: 'Task not found' });
     }
     console.log("Data deleted");
-    res.status(200).json(deletedTask);
+
+    res.status(200).json
+
+    (deletedTask);
+
   } catch (err) {
     console.log(err);
+    
     res.status(500).json({ error: 'Internal Server Error' });
   }
+
+  
 });
 
+// this is a comment
 module.exports = router;
+
+
